@@ -14,7 +14,7 @@ Maximum resolution: **1920** x **1080**
 // EXAMPLE:
 const images = [
       // other links..
-      "https://images.forza-api.tk/EXAMPLE.png",
+      "https://images.forza-api.tk/IMAGE_NAME.png",
     ]
 ```
 4. Create a pull request
