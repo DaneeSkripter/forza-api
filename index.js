@@ -14,6 +14,11 @@ const app = express()
       "https://images.forza-api.tk/img/LAMBORGHINI_HURACÁN_LP_610-4_2014.png",
       "https://images.forza-api.tk/img/JAGUAR_F-TYPE_R_COUPÉ_2015.png",
       "https://images.forza-api.tk/img/MERCEDES-AMG_GT_R_2017.png",
+      "https://images.forza-api.tk/img/ASTON_MARTIN_VANTAGE_2018.png",
+      "https://images.forza-api.tk/img/BMW_I8_ROADSTER_2018.png",
+      "https://images.forza-api.tk/img/TVR_SAGARIS_2005.png",
+      "https://images.forza-api.tk/img/ACURA_NSX_2017.png",
+      "https://images.forza-api.tk/img/BMW_M4_COUPE_2.png",
     ]
     const randomimage = images[Math.floor(Math.random() * images.length)]
     res.header("Access-Control-Allow-Origin", "*")
