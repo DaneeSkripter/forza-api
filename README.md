@@ -13,4 +13,4 @@ Image name must to be **car name**
 ### How-to
 1. Fork the repository
 2. Upload a image to **img** folder
-4. Create a pull request
+3. Create a pull request
