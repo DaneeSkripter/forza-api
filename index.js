@@ -11,7 +11,7 @@ app.get("/img/:path", async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-  const images = fs.readdirSync(__dirname + "/img").map(img => `https://images.forza-api.tk/img/${img}`);
+const images = fs.readdirSync(__dirname + "/img").map(img => `https://forza-api.tk/img/${img}`);
   const randomimage = images[Math.floor(Math.random() * images.length)];
   res.header("Access-Control-Allow-Origin", "*");
   res.json({
