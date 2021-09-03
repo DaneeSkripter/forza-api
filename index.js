@@ -1,31 +1,22 @@
-const express = require('express')
-const app = express()
-  app.get('/', async (req, res) => {
-    const images = [
-      "https://images.forza-api.tk/img/AUDI_RS6_2009.png",
-      "https://images.forza-api.tk/img/BMW_M4_COUPE.png",
-      "https://images.forza-api.tk/img/BMW_M5_2018.png",
-      "https://images.forza-api.tk/img/FORD_MUSTANG_GT_2018.png",
-      "https://images.forza-api.tk/img/LAMBORGHINI_GALLARDO.png",
-      "https://images.forza-api.tk/img/TOYOTA_SUPRA_RZ_1998.png",
-      "https://images.forza-api.tk/img/AUDI_RS7_SPORTBACK.png",
-      "https://images.forza-api.tk/img/ASCARI_KZ1R_2012.png",
-      "https://images.forza-api.tk/img/FERRARI_FXX_K_2014.png",
-      "https://images.forza-api.tk/img/LAMBORGHINI_HURACÁN_LP_610-4_2014.png",
-      "https://images.forza-api.tk/img/JAGUAR_F-TYPE_R_COUPÉ_2015.png",
-      "https://images.forza-api.tk/img/MERCEDES-AMG_GT_R_2017.png",
-      "https://images.forza-api.tk/img/ASTON_MARTIN_VANTAGE_2018.png",
-      "https://images.forza-api.tk/img/BMW_I8_ROADSTER_2018.png",
-      "https://images.forza-api.tk/img/TVR_SAGARIS_2005.png",
-      "https://images.forza-api.tk/img/ACURA_NSX_2017.png",
-      "https://images.forza-api.tk/img/BMW_M4_COUPE_2.png",
-    ]
-    const randomimage = images[Math.floor(Math.random() * images.length)]
-    res.header("Access-Control-Allow-Origin", "*")
-    res.json({
-      image: randomimage
-    })
-  })
+const express = require('express');
+const fs = require("fs");
+const app = express();
 
+// Using app.get instead of express.static, so files upload instantly
+app.get("/img/:path", async (req, res) => {
+  if (!fs.existsSync(__dirname + `/img/${req.params.path}`)) return res.sendStatus(404);
+  
+  res.setHeader("Content-Type", "image/png");
+  res.send(fs.readFileSync(__dirname + `/img/${req.params.path}`));
+});
 
-  app.listen(80)
+app.get('/', async (req, res) => {
+const images = fs.readdirSync(__dirname + "/img").map(img => `https://forza-api.tk/img/${img}`);
+  const randomimage = images[Math.floor(Math.random() * images.length)];
+  res.header("Access-Control-Allow-Origin", "*");
+  res.json({
+    image: randomimage
+  });
+});
+
+app.listen(80);
