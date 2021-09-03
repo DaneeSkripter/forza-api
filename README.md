@@ -13,12 +13,4 @@ Image name must to be **car name**
 ### How-to
 1. Fork the repository
 2. Upload a image to **img** folder
-3. Paste a link in a index:
-```JS
-// EXAMPLE:
-const images = [
-      // other links..
-      "https://images.forza-api.tk/img/IMAGE_NAME.png",
-    ]
-```
 4. Create a pull request
